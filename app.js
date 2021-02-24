@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { savePair } = require("./database")
-const router = Router();
+export const router = Router();
 
 router.post("/pairs/refresh", async (req, res) => {
     await savePair({
@@ -11,5 +11,3 @@ router.post("/pairs/refresh", async (req, res) => {
     })
     res.json({ message: "Success" });
 });
-
-export const router;
