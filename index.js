@@ -1,4 +1,14 @@
 const axios = require('axios')
+const admin = require('firebase-admin');
+
+const serviceAccount = require('./serviceAccountKey.json');
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
+const db = admin.firestore();
+
 
 axios.get('https://fapi.binance.com/fapi/v1/fundingRate')
     .then((response) => {
