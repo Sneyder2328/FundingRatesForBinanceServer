@@ -1,17 +1,21 @@
 const axios = require('axios')
 
-export const getFundingRatePairs = async () => {
+const getFundingRatePairs = async () => {
     const response = await axios.get('https://fapi.binance.com/fapi/v1/fundingRate')
     return response.data?.map((coin) => ({ ...coin, fundingRate: coin.fundingRate * 100 })).slice(0, 10)
 }
 
-export const getFundingRatesBySymbol = async (symbol) => {
+const getFundingRatesBySymbol = async (symbol) => {
     const response = await axios.get(`https://fapi.binance.com/fapi/v1/fundingRate?symbol=${symbol}&limit=40`)
     return response.data
 }
 
-export const getScore = async (fundingRates) => {
+const getScore = async (fundingRates) => {
 
+}
+
+module.exports = {
+    getFundingRatePairs, getFundingRatesBySymbol, getScore
 }
 
 // axios.get('https://fapi.binance.com/fapi/v1/fundingRate')

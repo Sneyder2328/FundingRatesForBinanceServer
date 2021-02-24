@@ -8,10 +8,12 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-export const savePair = async ({ symbol, score7d, score14d, score30d }) => {
+const savePair = async ({ symbol, score7d, score14d, score30d }) => {
     const res = await db.collection('pairs').doc(symbol).set({
         symbol, score7d, score14d, score30d,
         timestamp: FieldValue.serverTimestamp()
     });
     // await db.collection('pairs').doc(symbol).collection("fundingRates")
 }
+
+module.exports = { savePair }
